@@ -23,7 +23,7 @@ class MyHandler (http.server.SimpleHTTPRequestHandler):
 
     def do_GET(self):
         print(self.headers)
-        if self.path[:3] == "/res":
+        if self.path[:4] == "/res":
             http.server.SimpleHTTPRequestHandler.do_GET(self)
         else:
             self.research()        
