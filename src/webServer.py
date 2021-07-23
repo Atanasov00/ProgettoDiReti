@@ -23,10 +23,10 @@ class MyHandler (http.server.SimpleHTTPRequestHandler):
 
     def do_GET(self):
         print(self.headers)
-        if self.path[:4] == "/res":
+        if self.path[:3] == "/res":
             http.server.SimpleHTTPRequestHandler.do_GET(self)
         else:
-            self.research        
+            self.research()        
         
     # Funzione per la ricerca della pagina
     def research(self):
@@ -40,11 +40,13 @@ class MyHandler (http.server.SimpleHTTPRequestHandler):
                 break
             else:
                 cont += 1
-                if(cont == len(pages))
+                if cont == len(pages):
                     found = False
         if found == False:
             self.do_HEAD()
-            self.wfile.write(bytes("404 Error\nPage not found", "utf8"))
+            self.wfile.write(bytes("404 Error Page not found", "utf8"))
+
+
 
 # Il numero della porta può essere fornito da riga di comando (default 8080)
 if sys.argv[1:]:
